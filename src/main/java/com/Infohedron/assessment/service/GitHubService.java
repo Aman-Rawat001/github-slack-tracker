@@ -27,7 +27,7 @@ public class GitHubService {
 
         Map<String, Object> pusher = (Map<String, Object>) payload.get("pusher");
         List<Map<String, Object>> commits = (List<Map<String, Object>>) payload.get("commits");
-
+        System.out.println("FULL PAYLOAD: " + payload);
         String name = (String) pusher.get("name");
         String email = (String) pusher.get("email");
 

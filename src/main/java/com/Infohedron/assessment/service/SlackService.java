@@ -1,5 +1,6 @@
 package com.Infohedron.assessment.service;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -10,7 +11,8 @@ import java.util.Map;
 @Service
 public class SlackService {
 
-    private final String WEBHOOK_URL = "YOUR_SLACK_WEBHOOK_URL";
+    @Value("${slack.webhook.url}")
+    private String webhookUrl;
 
     public void sendMessage(String author, List<String> commits) {
 
@@ -26,6 +28,6 @@ public class SlackService {
         Map<String, String> payload = new HashMap<>();
         payload.put("text", message.toString());
 
-        restTemplate.postForObject(WEBHOOK_URL, payload, String.class);
+        restTemplate.postForObject(webhookUrl, payload, String.class);
     }
 }

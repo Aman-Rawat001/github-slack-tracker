@@ -29,5 +29,7 @@ public class SlackService {
         payload.put("text", message.toString());
 
         restTemplate.postForObject(webhookUrl, payload, String.class);
+
+        
     }
 }
